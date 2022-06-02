@@ -1,24 +1,25 @@
 -- LUA 5.4 REQUIRE
 
-local funcs = {}
+perm = {}
 
-function funcs:new(tb, number) -- Initialisation
-    tb = tb or {}
-    setmetatable(tb, self)
-    self.__index = self
-    self.permission = number or 0
+function perm:new(permNumber) -- Initialisation
+    
+    local tb = { permission = permNumber}
 
+    setmetatable ( tb, { __index = perm } )
+    
     return tb
+
 end
  -- Renvoie le total des permissions
  -- return int
-function funcs:getPermission()
+function perm:getPermission()
     return self.permission
 end
 
 -- Renvoie toutes les permissions sous forme de table {1, 2, 4, 8, 16, 32 ..}
 -- return table
-function funcs:getPermissions() 
+function perm:getPermissions() 
     local pow = 0
     local permissions = {}
     local x = self.permission
@@ -37,13 +38,13 @@ function funcs:getPermissions()
     return permissions
 end
 
-function funcs:setPermission(number) -- Définis la permission
+function perm:setPermission(number) -- Définis la permission
     self.permission = number
 end
 
 -- Ajoute la permission aux permissions existante (si elle n'est pas déjà présente)
 -- return int , new permission
-function funcs:addPermission(number) 
+function perm:addPermission(number) 
     local permissions = self:getPermissions()
     for i = 1, #permissions do
         if number == permissions[i] then
@@ -57,7 +58,7 @@ end
 
 -- Retire la permission aux permission existante (si elle est présente)
 -- return int , new permission
-function funcs:deletePermission(number) 
+function perm:deletePermission(number) 
     local permissions = self:getPermissions()
     for i = 1, #permissions do
         if number == permissions[i] then
@@ -70,7 +71,7 @@ end
 
 -- Est-ce que la permission existe ?
 -- return bool
-function funcs:doesPermissionExist(number) 
+function perm:doesPermissionExist(number) 
     local permissions = self:getPermissions()
     for i = 1, #permissions do
         if number == permissions[i] then
