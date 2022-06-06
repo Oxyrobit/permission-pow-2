@@ -1,19 +1,20 @@
 # permission-pow-2
 LUA pow 2 system permission
 
+## Installation
+- Download the latest release
+- Unzip the file and add the `permission-pow-2` to your resources folder
 
-# How to use
-```lua
-local perm = funcs:new(nil, 127)
-
-perm:getpermission() -- 127
-perm:getPermissions() -- tb {1, 2, 4, 8, 16, 32 ..}
-perm:setPermission(int)
-perm:addPermission(int) -- return new permission
-perm:deletePermission(int) -- return new permission
-perm:doesPermissionExist(int) -- BOOL
-perm:setMaxPermission(int) -- Set last permission (eg: 32)
-perm:getMissingPermission() -- return tb of missing permission or return 0
-```
+### Methods
+| function              | parameter           | return                      |
+|--------------         |---------------------|------------------------     |
+| perm.new              | permission `number` | `table` object              |
+| :getpermission        | none                | `number` permission         |
+| :getpermissions       | none                | `table`  permissions        |
+| :setPermission        | `number`            | `number` new permission     |
+| :addPermission        | `number`            | `number` new permission     |
+| :deletePermission     | `number`            | `number` new permission     |
+| :doesPermissionExist  | `number`            | `boolean`                   |
+| :getMissingPermission | none                | `table`  Missing Permissions|
 
 Discord : ITS TRAINING MEN#1111
