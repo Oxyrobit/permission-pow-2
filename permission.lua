@@ -11,9 +11,9 @@ local function IsInTable(var, tab)
 	return false
 end
 
-function perm:new(permNumber, maxPerm) -- Initialisation
+function perm:new(permNumber, lastPerm) -- Initialisation
     
-    local tb = { permission = permNumber, maxPermission = maxPerm or 0}
+    local tb = { permission = permNumber, lastPermission = lastPerm or 0}
 
     setmetatable ( tb, { __index = perm } )
     
@@ -51,8 +51,8 @@ function perm:setPermission(number) -- Définis la permission
     self.permission = number
 end
 
-function perm:setMaxPermission(number) -- Définis le niveau maximal de permission
-    self.maxPermission = number
+function perm:setLastPermission(number) -- Définis le niveau maximal de permission
+    self.lastPermission = number
 end
 
 -- Ajoute la permission aux permissions existante (si elle n'est pas déjà présente)
@@ -70,13 +70,13 @@ function perm:addPermission(number)
     return self.permission
 end
 
-function perm:getMissingPermission() -- renvoie les autorisations manquante (besoin de setMaxPermission )
-    if self.maxPermission == 0 then
+function perm:getMissingPermissions() -- renvoie les autorisations manquante (besoin de setMaxPermission )
+    if self.lastPermission == 0 then
         return 0
     else
         local permissions = self:getPermissions() -- Permission actuelle
-        local max = self.maxPermission -- dernière permisison
-        local missiongPermission = {} -- Permission manquantes
+        local max = self.lastPermission -- dernière permisison
+        local missingPermissions = {} -- Permission manquantes
 
         local exp = 1 / (math.log(2)/ math.log(max)) --Obtient l'exposant à la puissance 2 du nombre max
         
@@ -86,12 +86,12 @@ function perm:getMissingPermission() -- renvoie les autorisations manquante (bes
 
             if not (n) then -- Si n'est pas présent dans la table
                 
-                missiongPermission[#missiongPermission + 1] =  math.floor(2^i)
+                missingPermissions[#missingPermissions + 1] =  math.floor(2^i)
                 
             end
         end
 
-        return missiongPermission
+        return missingPermissions
     end
 
 
