@@ -8,7 +8,7 @@ LUA pow 2 system permission
 ### Methods
 | function              | parameter           | return                      |
 |--------------         |---------------------|------------------------     |
-| perm.new              | permission `number` | `table` object              |
+| perm.new              | permission `number`, max permission `number` | `table` object              |
 | :getpermission        | none                | `number` permission         |
 | :getpermissions       | none                | `table`  permissions        |
 | :setPermission        | `number`            | `number` new permission     |
