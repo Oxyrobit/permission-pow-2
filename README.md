@@ -12,9 +12,10 @@ LUA pow 2 system permission
 | :getpermission        | none                | `number` permission         |
 | :getpermissions       | none                | `table`  permissions        |
 | :setPermission        | `number`            | `number` new permission     |
+| :setLastPermission    | `number`            | `number` last permission    |
 | :addPermission        | `number`            | `number` new permission     |
 | :deletePermission     | `number`            | `number` new permission     |
 | :doesPermissionExist  | `number`            | `boolean`                   |
-| :getMissingPermission | none                | `table`  Missing Permissions|
+| :getMissingPermissions | none                | `table`  Missing Permissions|
 
 Discord : ITS TRAINING MEN#1111
