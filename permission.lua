@@ -32,9 +32,8 @@ function perm:getPermissions()
     local pow = 0
     local permissions = {}
     local x = self.permission
-    while (2^(pow + 1) <= x) do
-        pow += 1
-    end
+	
+    local pow = math.floor((math.log(x)/ math.log(2)))
 
     while not (x <= 0) do
         if (2^pow) <= x then
