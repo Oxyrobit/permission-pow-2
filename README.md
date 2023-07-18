@@ -18,4 +18,4 @@ LUA pow 2 system permission
 | :doesPermissionExist  | `number`            | `boolean`                   |
 | :getMissingPermissions | none                | `table`  Missing Permissions|
 
-Discord : ITS TRAINING MEN#1111
+Discord : Oxyrobit
